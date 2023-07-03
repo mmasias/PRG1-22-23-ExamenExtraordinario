@@ -6,8 +6,8 @@ public class examenextraordinario1 {
     private static final int ocupacion = 6;
 
     private static String[][] hojacalculo = new String[filas][columnas];
-    private static int currentfilas = 0;
-    private static int currentcolumnas = 0;
+    private static int filaactual = 0;
+    private static int columnaactual = 0;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -36,7 +36,26 @@ public class examenextraordinario1 {
             break;
             writeValue(command);
             break;
+        }
+    }
+        scanner.close();
+        System.out.println("Ingrese comando: ");
+    }
+    private static void initializeSpreadsheet(){
+        for(int fila=0; fila<15; fila++){
+            for(int columna=0; columna<10; comluma++){
+                hojacalculo[fila][columna] = "";
             }
         }
     }
+    private static void printSpreadsheet(){
+        System.out.println("Hoja de calculo: ");
+        for(int fila=0; fila<15; fila++){
+            for( int columna=0; columna<10; columna++){
+                String value = hojacalculo[fila][columna];
+                System.out.print(formatCellValue(value)+" ");
+            }
+            System.out.println();
+       }
+  }
 }
