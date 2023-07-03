@@ -8,7 +8,7 @@ public class Main {
         boolean terminar = false;
 
         int[][] unaMatriz = {
-                {0, 0, 1, 0, 0, 0, 0, 0, 0, 0,},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},
@@ -38,6 +38,7 @@ public class Main {
             for (int laFila = 0; laFila < unaMatriz.length; laFila++) {
                 for (int laColumna = 0; laColumna < unaMatriz[laFila].length; laColumna++) {
                     if (laFila == posicion[0] && laColumna == posicion[1]) {
+
                         posicionActual(skin);
                     } else {
                         hojaCalculo(unaMatriz[laFila][laColumna], skin);
@@ -49,22 +50,22 @@ public class Main {
 
             inputUsuario = entrada.nextLine().charAt(0);
             switch (inputUsuario) {
-                case 's', 'S', '8':
+                case 's', 'S':
                     posicion[0] = posicion[0] + 1;
                     break;
-                case 'w', 'W', '2':
+                case 'w', 'W':
                     posicion[0] = posicion[0] - 1;
                     break;
-                case 'a', 'A', '4':
+                case 'a', 'A':
                     posicion[1] = posicion[1] - 1;
                     break;
-                case 'd', 'D', '6':
+                case 'd', 'D':
                     posicion[1] = posicion[1] + 1;
                     break;
                 case 'E', 'e':
                     System.out.println("Ingrese el nuevo valor de la casilla");
-
-
+                    unaMatriz[posicion[0]][posicion[1]] = entrada.nextInt();
+                    String[] posActual= {entrada.nextLine()};
                     break;
                 case 'f', 'F':
                     System.out.println("Fin de la hoja de calculo");
@@ -97,7 +98,7 @@ public class Main {
     static void hojaCalculo(int unTile, int skin) {
 
         String[][] terreno = {
-                {" . ",},{"2222"}
+                {" . ",},{}
         };
         System.out.print(terreno[unTile][skin]);
     }
