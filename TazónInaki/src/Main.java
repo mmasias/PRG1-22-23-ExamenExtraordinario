@@ -38,9 +38,7 @@ public class Main {
                     break;
                 case "e":
                     System.out.print("Introduce el valor: ");
-                    double value = scanner.nextDouble();
-                    value = value % 1_000_000;
-                    cells[currentRow][currentCol] = value;
+                    cells[currentRow][currentCol] = scanner.nextDouble();
                     break;
                 case "f":
                     System.out.println("Saliendo del programa.");
@@ -49,3 +47,24 @@ public class Main {
                 default:
                     System.out.println("Comando desconocido.");
                     break;
+            }
+        }
+    }
+
+    private void printCells() {
+        for (int i = 0; i < NUM_ROWS; i++) {
+            for (int j = 0; j < NUM_COLS; j++) {
+                if (i == currentRow && j == currentCol) {
+                    System.out.print("[" + cells[i][j] + "]" + "\t");
+                } else {
+                    System.out.print(cells[i][j] + "\t");
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        new Main().run();
+    }
+}
