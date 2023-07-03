@@ -4,7 +4,6 @@ public class VisiCalc {
     public static void main(String[] args) {
         int filas = 15;
         int columnas = 10;
-        int maxFila, maxColumna, minFila, minColumna; 
 
         Scanner scanner = new Scanner(System.in);
         boolean ejecucion = true;
@@ -12,29 +11,27 @@ public class VisiCalc {
         int columnaActual = 0;
         String texto = scanner.nextLine();
         String comando= scanner.nextLine();
-      
 
         //tengo que dibujar la matriz
-        int[][] VisiCalc = {
+       int[][] matrizCalc = {
 			{2,1,1,1,1,1,1,1,1,2},
-			{2,1,2,1,1,1,1,2,0,2},
-			{2,1,2,2,2,2,2,2,2,2},
-			{2,1,2,2,2,2,2,2,2,2},
-			{2,1,1,1,1,1,0,0,0,2},
-			{2,1,0,0,0,0,0,0,0,2},
-			{2,0,0,0,0,0,1,4,2,2},
-			{2,2,1,0,0,0,0,2,3,2},
-			{2,0,1,0,0,0,0,2,3,2},
-			{2,0,1,0,0,0,0,4,3,2},
-			{2,1,3,3,3,3,3,3,3,2},
-			{2,3,3,0,0,0,1,4,3,2},
-			{2,0,1,0,0,0,0,3,3,2},
-			{2,0,1,0,0,0,0,3,3,2},
+			{2,8,8,0,0,0,0,0,0,2},
+			{2,8,0,0,0,0,0,0,0,2},
+			{2,0,0,0,0,0,0,0,0,2},
+			{2,0,0,0,0,0,0,0,0,2},
+			{2,0,0,0,0,0,0,0,0,2},
+			{2,0,0,0,0,0,0,0,0,2},
+			{2,5,5,5,5,0,0,0,5,2},
+			{2,0,0,0,0,0,0,0,0,2},
+			{2,0,0,0,0,0,0,0,0,2},
+			{2,0,1,1,1,0,0,0,1,2},
+			{2,0,1,1,1,1,2,1,1,2},
+			{2,0,0,1,0,0,0,0,0,2},
+			{2,0,0,1,0,0,0,0,0,2},
 			{2,1,1,1,1,1,1,1,1,2},
-			
-		};
-
         
+        };
+
 
         while (ejecucion) {
 
@@ -43,9 +40,19 @@ public class VisiCalc {
             // Obtener el comando del usuario
             System.out.println("CMDs: [W]Arriba,[S]Abajo,[A]Izquierda,[D]Derecha,[F]Salir");
             System.out.println("Inserte comando: ");
-            System.out.println("X: ["+filas+"] / Y: ["+columnas+"]");  
             comando = scanner.nextLine();        
         }
+
+        // INICIO DEL PARSEO
+						if      ( matrizCalc[filas][columnas]==0)	{System.out.print(" + ");}	// ESQUINAS
+						else if ( matrizCalc[filas][columnas]==1)	{System.out.print("-");}	    // PAREDES
+						else if ( matrizCalc[filas][columnas]==2)	{System.out.print("|");}	    // SEPARADORES
+					
+						
+						// FIN DEL PARSEO
+					}
+				}
+				System.out.println();
 
         // Procesar el comando
        
@@ -65,7 +72,10 @@ public class VisiCalc {
                 if (columnaActual < columnas - 1) {
                     columnaActual++;
                 }
-            }
+          } else if (comando.equalsIgnoreCase("Entrar")) {
+                System.out.print("Ingrese un texto: ");
+                texto = scanner.nextLine();
+
                
         //Texto
             
@@ -84,5 +94,8 @@ public class VisiCalc {
             } 
              scanner.close();
         System.out.println("Ejecucion finalizada.");
+
+             
+}
     }
 }
