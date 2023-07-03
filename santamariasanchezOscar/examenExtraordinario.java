@@ -10,49 +10,31 @@ public class Main {
             for (int j = 0; j < hojaCalculo[i].length; j++) {
                 hojaCalculo[i][j] = 0;
 
-                System.out.println("+----------------------------------------------------+");
-                System.out.println("|  |  A |  B |  C |  D |  E |  F |  G |  H |  I |  J |");
-                System.out.println("+----------------------------------------------------+");
-                System.out.println("|  1|    |    |    |    |    |    |    |    |    |    |");
-                System.out.println("|  2|    |    |    |    |    |    |    |    |    |    |");
-                System.out.println("|  3|    |    |    |    |    |    |    |    |    |    |");
-                System.out.println("|  4|    |    |    |    |    |    |    |    |    |    |");
-                System.out.println("|  5|    |    |    |    |    |    |    |    |    |    |");
-                System.out.println("|  6|    |    |    |    |    |    |    |    |    |    |");
-                System.out.println("|  7|    |    |    |    |    |    |    |    |    |    |");
-                System.out.println("|  8|    |    |    |    |    |    |    |    |    |    |");
-                System.out.println("|  9|    |    |    |    |    |    |    |    |    |    |");
-                System.out.println("| 10|    |    |    |    |    |    |    |    |    |    |");
-                System.out.println("| 11|    |    |    |    |    |    |    |    |    |    |");
-                System.out.println("| 12|    |    |    |    |    |    |    |    |    |    |");
-                System.out.println("| 14|    |    |    |    |    |    |    |    |    |    |");
-                System.out.println("| 13|    |    |    |    |    |    |    |    |    |    |");
-                System.out.println("+----------------------------------------------------+");
-                int contadorX = 0;
-                int contadorY = 0;
-                System.out.println("|        |x " + contadorX + "|  |y: " + contadorY + "|                  |");
-                System.out.println("+----------------------------------------------------+");
-                System.out.println("[W] arriba, [A] izquierda, [S] abajo, [D] derecha, [F] insertar valor");
+                imprimeHoja();
 
                 System.out.println("Introduce una opción: ");
                 switch (s.next()) {
                     case "w": {
                         j = j + 1;
+                        imprimeHoja();
                         break;
                     }
                     case "a": {
                         i = i - 1;
+                        imprimeHoja();
                         break;
                     }
                     case "s": {
                         j = j - 1;
+                        imprimeHoja();
                         break;
                     }
                     case "d": {
                         i = i + 1;
+                        imprimeHoja();
                         break;
                     }
-                    case "f": {
+                    case "enter": {
                         for (int k = 0; k < hojaCalculo.length; k++) {
                             for (int l = 0; l < hojaCalculo[k].length; l++) {
                                 hojaCalculo[k][l] = 0;
@@ -68,9 +50,15 @@ public class Main {
                             }
                         }
                     }
+                    case "f": {
+                        System.out.println("Se cerro el programa");
+                        break;
+                    }
                 }
 
-                contadorX = 0;
+                int contadorX = 0;
+                int contadorY = 0;
+
                 if (s.next() == "d") {
                     contadorX++;
                 } else if (s.next() == "a") {
@@ -98,4 +86,33 @@ public class Main {
 
     }
 
+    public static void imprimeHoja() {
+        for (int i = 0; i < 15; ++i) {
+            for (int j = 0; j < 10; ++j) {
+                System.out.println("+----------------------------------------------------+");
+                System.out.println("|  |  A |  B |  C |  D |  E |  F |  G |  H |  I |  J |");
+                System.out.println("+----------------------------------------------------+");
+                System.out.println("|  1|    |    |    |    |    |    |    |    |    |    |");
+                System.out.println("|  2|    |    |    |    |    |    |    |    |    |    |");
+                System.out.println("|  3|    |    |    |    |    |    |    |    |    |    |");
+                System.out.println("|  4|    |    |    |    |    |    |    |    |    |    |");
+                System.out.println("|  5|    |    |    |    |    |    |    |    |    |    |");
+                System.out.println("|  6|    |    |    |    |    |    |    |    |    |    |");
+                System.out.println("|  7|    |    |    |    |    |    |    |    |    |    |");
+                System.out.println("|  8|    |    |    |    |    |    |    |    |    |    |");
+                System.out.println("|  9|    |    |    |    |    |    |    |    |    |    |");
+                System.out.println("| 10|    |    |    |    |    |    |    |    |    |    |");
+                System.out.println("| 11|    |    |    |    |    |    |    |    |    |    |");
+                System.out.println("| 12|    |    |    |    |    |    |    |    |    |    |");
+                System.out.println("| 14|    |    |    |    |    |    |    |    |    |    |");
+                System.out.println("| 13|    |    |    |    |    |    |    |    |    |    |");
+                System.out.println("+-----------------------------------------------------+");
+                System.out.println("|        |x" + i + "|    |y" + j + "|                               |");
+                System.out.println("+-----------------------------------------------------+");
+                System.out.println("[W] arriba, [A] izquierda, [S] abajo, [D] derecha, [Enter] insertar palabra, [F] salir");
+            }
+        }
+
     }
+
+}
