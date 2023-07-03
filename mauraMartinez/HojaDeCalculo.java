@@ -22,7 +22,8 @@ public class HojaCalculo {
 
             imprimeHojaCalculo(hojaCalculo);
             
-            
+
+           
 
 
            System.out.println("Posición actual: (" + filaActual + ", " + columnaActual + ")");
