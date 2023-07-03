@@ -28,7 +28,9 @@ public class Main {
                 System.out.println("| 14|    |    |    |    |    |    |    |    |    |    |");
                 System.out.println("| 13|    |    |    |    |    |    |    |    |    |    |");
                 System.out.println("+----------------------------------------------------+");
-                System.out.println("|        |x "+ i +"|  |y: " + j + "|                                            |");
+                int contadorX = 0;
+                int contadorY = 0;
+                System.out.println("|        |x " + contadorX + "|  |y: " + contadorY + "|                  |");
                 System.out.println("+----------------------------------------------------+");
                 System.out.println("[W] arriba, [A] izquierda, [S] abajo, [D] derecha, [F] insertar valor");
 
@@ -64,19 +66,36 @@ public class Main {
                                     System.out.println(palabra.substring(0, 4));
                                 }
                             }
-                        };
+                        }
                     }
                 }
 
-                if (i > 15 || j > 10) {
-                    System.out.println("Error");
+                contadorX = 0;
+                if (s.next() == "d") {
+                    contadorX++;
+                } else if (s.next() == "a") {
+                    contadorX--;
                 }
-                
+
+                if (s.next() == "w") {
+                    contadorY++;
+                } else if (s.next() == "s") {
+                    contadorY--;
+                }
+
+
+                if (i > 15 || j > 10) {
+                    i = 1;
+                    j = 1;
+                } else if (i < 0 || j < 0) {
+                    i = 14;
+                    j = 9;
+                }
+
 
             }
         }
 
     }
-    
-    }
 
+    }
