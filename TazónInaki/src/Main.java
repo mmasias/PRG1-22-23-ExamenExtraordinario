@@ -36,4 +36,16 @@ public class Main {
                         currentCol++;
                     }
                     break;
-
+                case "e":
+                    System.out.print("Introduce el valor: ");
+                    double value = scanner.nextDouble();
+                    value = value % 1_000_000;
+                    cells[currentRow][currentCol] = value;
+                    break;
+                case "f":
+                    System.out.println("Saliendo del programa.");
+                    scanner.close();
+                    return;
+                default:
+                    System.out.println("Comando desconocido.");
+                    break;
