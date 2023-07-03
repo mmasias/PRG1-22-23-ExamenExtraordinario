@@ -1,0 +1,87 @@
+import java.util.Scanner;
+
+public class VisiCalc {
+
+    public static void main(String[] args) {
+
+        Scanner entrada = new Scanner(System.in);
+        char inputUsuario;
+        boolean terminar = false;
+        String inicioCadena = "+-------------------------------------------+";
+
+        int[][] hojaCalculo = {
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
+        };
+
+        int[] jugador = { 5, 5 };
+
+        do {
+            System.out.println(inicioCadena);
+            for (int laFila = 0; laFila < hojaCalculo.length; laFila++) {
+                for (int laColumna = 0; laColumna < hojaCalculo[laFila].length; laColumna++) {
+
+                    if (laFila == jugador[0] && laColumna == jugador[1]) {
+                        System.out.print("... ");
+                    } else {
+                        if (hojaCalculo[laFila][laColumna] == 0) {
+                            System.out.print("    ");
+                        }
+                    }
+
+                    if (laColumna != hojaCalculo[laFila].length - 1) {
+                        System.out.print("|");
+                    }
+                }
+                System.out.println();
+                System.out.println(inicioCadena);
+            }
+
+            System.out.println("[W]Arriba, [S]Abajo,[A]Izquierda,[D]Derecha,[F]Salir");
+            inputUsuario = entrada.nextLine().charAt(0);
+            
+            int filaAnterior = jugador[0];
+            int columnaAnterior = jugador[1];
+
+            switch (inputUsuario) {
+                case 's':
+                case 'S':
+                    jugador[0] = Math.min(jugador[0] + 1, hojaCalculo.length - 1);
+                    break;
+                case 'w':
+                case 'W':
+                    jugador[0] = Math.max(jugador[0] - 1, 0);
+                    break;
+                case 'a':
+                case 'A':
+                    jugador[1] = Math.max(jugador[1] - 1, 0);
+                    break;
+                case 'd':
+                case 'D':
+                    jugador[1] = Math.min(jugador[1] + 1, hojaCalculo[0].length - 1);
+                    break;
+                case 'f':
+                case 'F':
+                    terminar = true;
+                    break;
+            }
+
+            hojaCalculo[filaAnterior][columnaAnterior] = 0;
+            hojaCalculo[jugador[0]][jugador[1]] = 1;
+
+        } while (!terminar);
+    }
+}
