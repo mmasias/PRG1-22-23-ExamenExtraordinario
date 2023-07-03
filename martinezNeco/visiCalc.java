@@ -13,21 +13,18 @@ public class visiCalc {
         inicializar(hojaCalculo);
 
 
-
-
-        // Bucle principal
         Scanner scanner = new Scanner(System.in);
         String Comando;
         while (true) {
-            // Imprimir la hoja de cálculo
+
             imprimirHoja(hojaCalculo);
             imprimirCeldaActual(filaActual, columnaActual);
 
-            // Leer el comando del usuario
+
             System.out.print("CMDs: [W] Arriba, [S] Abajo, [A] Izquierda, [D] Derecha, [E] Escribir,E [F] Salir - Ingrese comando:");
             Comando = scanner.nextLine().trim().toUpperCase();
 
-            // Procesar el comando
+
             if (Comando.equals("W")) {
                 if (filaActual > 0) {
                     filaActual--;
@@ -59,13 +56,9 @@ public class visiCalc {
 
         }
 
-
         System.out.println("Programa finalizado.");
 
-
     }
-
-
 
 
 
@@ -85,7 +78,11 @@ public class visiCalc {
         }
         System.out.println();
 
-        System.out.println("------------------------------------------------------------------------");
+        System.out.print("\t\t");
+        for (int i = 0; i < hojaCalculo[0].length; i++) {
+            System.out.print("--------\t");
+        }
+        System.out.println();
 
         for (int i = 0; i < hojaCalculo.length; i++) {
             System.out.print(i + 1 + "\t|\t");
@@ -99,7 +96,11 @@ public class visiCalc {
                 System.out.printf("%-6s\t|\t", Celda);
             }
             System.out.println();
-            System.out.println("------------------------------------------------------------------------");
+            System.out.print("\t|\t");
+            for (int j = 0; j < hojaCalculo[i].length; j++) {
+                System.out.print("--------\t");
+            }
+            System.out.println();
         }
         System.out.println();
 
