@@ -1,0 +1,132 @@
+import java.util.Scanner;
+
+public class VisiCalc{
+     public static void main(String[] args){
+
+        Scanner entrada = new Scanner(System.in);
+        char inputUsuario;
+        char inputnumeros;
+        boolean terminar = (false);
+        int diseño = 0;
+        String[] diseñoUsuario = {"[___]"};
+        String[] espacio0 = {"     "};
+        String[] pared1 = {"  |  "};
+        String[] pared2 = {"-----"};
+        String[] pared3 = {"  +  "};
+
+        int[][] hojadeCalculo ={
+            {3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3},
+            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 ,1},
+            {1, 0, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3},
+            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
+            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
+            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
+            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
+            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
+            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
+            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
+            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
+            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
+            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
+            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
+            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
+            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
+            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
+            {1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1},
+            {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+            {1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1},
+            
+        };
+
+        int [] posicionUsuario = {9, 11};
+
+        do{
+            for (int fila = 0; fila < hojadeCalculo.length; fila++){
+                for (int columna = 0; columna < hojadeCalculo.length; columna++){
+
+                    if (fila == posicionUsuario[0] && columna == posicionUsuario[1]){
+                        System.out.print(diseñoUsuario[diseño]);
+
+                     if (hojadeCalculo[fila][columna] == 0){
+                        
+                     }
+
+                    }else {
+                        if(hojadeCalculo[fila][columna] == 0){
+                            System.out.print(espacio0[diseño]);
+                        
+                        }else if  (hojadeCalculo[fila][columna] == 1){
+                            System.out.print(pared1[diseño]);
+
+                        }else if (hojadeCalculo[fila][columna]== 2 ){
+                            System.out.print(pared2[diseño]);
+                            
+                        }else if (hojadeCalculo[fila][columna] == 3){
+                            System.out.print(pared3[diseño]);
+
+                        }
+
+                    }
+
+
+                }
+                System.out.println();
+            }
+
+            inputUsuario = entrada.nextLine().charAt(0);
+            switch (inputUsuario){
+                case 's', 'S':
+                if (posicionUsuario[0] == 19){
+                posicionUsuario[0] = 0;
+                }else {
+                    posicionUsuario[0] = posicionUsuario[0] + 1;
+                } 
+                break;
+
+                case 'w', 'W':
+                if (posicionUsuario[0] == 0){
+                    posicionUsuario[0] = 19;
+                }else{
+                    posicionUsuario[0] = posicionUsuario[0] - 1;
+                }
+               
+                break;
+
+                case 'a', 'A':
+                if(posicionUsuario[1] == 0){
+                    posicionUsuario[1] = 22;
+                }else{
+                    posicionUsuario[1] = posicionUsuario[1] - 1;
+                }
+                break;
+
+                case 'd', 'D':
+                if(posicionUsuario[1] == 22){
+                    posicionUsuario[1] = 0;
+                }else{
+                    posicionUsuario[1] = posicionUsuario[1] + 1;
+                }
+                break;
+
+                case 'e', 'E':
+                inputUsuario = entrada.nextLine().charAt(0);
+                if (inputUsuario > 0){
+                    System.out.println();
+                }
+                break;
+
+                case 'f', 'F':
+                terminar = true;
+               
+               
+                                
+
+            }
+
+        }while (!terminar);
+
+        
+    }
+
+} 
+   
