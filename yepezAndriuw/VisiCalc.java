@@ -5,6 +5,7 @@ public class VisiCalc {
         final int NUM_COLUMNAS = 10;
         final int NUM_FILAS = 15;
         final int LONGITUD_MAXIMA = 6;
+
         String[][] hojaCalculo = new String[NUM_FILAS][NUM_COLUMNAS];
         int filaActual = 0;
         int columnaActual = 0;
@@ -50,11 +51,22 @@ public class VisiCalc {
             }
 
             System.out.println("--- HOJA DE CALCULOS ---");
-            System.out.println("| | A | B | C | D | E | F | G | H | I | J |");
+            System.out.println("| 1 |    A   |    B   |    C   |    D   |    E   |    F   |    G   |    H   |    I   |    J   |");
             mostrarHojaDeCalculo(hojaCalculo);
-            System.out.println("| X: "+(filaActual + 1+"|"+" Y: "+columnaActual+"|"));
-            System.out.println("--------------------------");
+            System.out.println("| |X: "+(filaActual + 1+"|"+" Y: "+columnaActual+"|"));
+            System.out.println("+----------------------------------------------------------------------------------------------+");
         } while (!terminar);
+    }
+
+    private static void mostrarRegleta() {
+        final int NUM_COLUMNAS = 10;
+        String REGLETA = "+----------------------------------------------------------------------------------------------+";
+        System.out.println(REGLETA);
+
+        for(char columna = 'A'; columna < 'A' + NUM_COLUMNAS; columna++) {
+            System.out.println(" "+ columna);
+        }
+        System.out.println();
     }
 
     private static String formatearContenido(String contenido) {
@@ -73,11 +85,21 @@ public class VisiCalc {
     private static void mostrarHojaDeCalculo(String[][] hojaCalculo) {
         final int NUM_FILAS = hojaCalculo.length;
         final int NUM_COLUMNAS = hojaCalculo[0].length;
-        for (int fila = 0; fila < NUM_FILAS; fila++){
+        String REGLETA = "+----------------------------------------------------------------------------------------------+";
+        System.out.println(REGLETA);
+
+        for (int fila = 0; fila < NUM_FILAS; fila++) {
+            System.out.print("| " + (fila + 1) + " |");
             for (int columna = 0; columna < NUM_COLUMNAS; columna++) {
-                System.out.print(hojaCalculo[fila][columna] + " ");
+                String contenido = hojaCalculo[fila][columna];
+                if (contenido == null) {
+                    contenido = "";
+                }
+                System.out.print(" " + formatearContenido(contenido) + " |");
             }
             System.out.println();
         }
+
+        System.out.println(REGLETA);
     }
 }
