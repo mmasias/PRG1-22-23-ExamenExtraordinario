@@ -17,33 +17,34 @@ public class examenextraordinario1 {
         printSpreadsheet();
         printCursorPosition();
 
-        String command = scanner.nextLine().toUpperCase(null);
+        String command = scanner.nextLine().toUpperCase();
         switch(command){
-            case "W":
+        case "W":
             moveup();
             break;
-            case "A":
+        case "A":
             moveLeft();
             break;
-            case "S":
+        case "S":
             moveDown();
             break;
-            case "D":
+        case "D":
             moveRight();
             break;
-            case "F":
+        case "F":
             running = false;
             break;
+        default:
             writeValue(command);
             break;
         }
     }
         scanner.close();
-        System.out.println("Ingrese comando: ");
+        System.out.println("Programa ejecutado correctamente. ");
     }
     private static void initializeSpreadsheet(){
         for(int fila=0; fila<15; fila++){
-            for(int columna=0; columna<10; comluma++){
+            for(int columna=0; columna<10; columna++){
                 hojacalculo[fila][columna] = "";
             }
         }
@@ -56,6 +57,40 @@ public class examenextraordinario1 {
                 System.out.print(formatCellValue(value)+" ");
             }
             System.out.println();
-       }
-  }
+        }
+        System.out.println();
+    }
+    private static void printCursorPosition(){
+        System.out.println("Posicion actual: Fila"+(filaactual+1)+", Columna: "+(columnaactual+1));
+    }
+    private static String formatCellValue(String value){
+        if(value.length() <= ocupacion){
+            return value;
+        } else{
+            return value.substring(0, ocupacion);
+        }
+    }
+    private static void moveup(){
+        if(filaactual>0){
+            filaactual--;
+        }
+    }
+    private static void moveDown(){
+        if(filaactual<15-1){
+            filaactual++;
+        }
+    }
+    private static void moveLeft(){
+        if(columnaactual>0){
+            columnaactual--;
+        }
+    }
+    private static void moveRight(){
+        if(columnaactual<10-1){
+            columnaactual++;
+        }
+    }
+    private static void writeValue(String value){
+        hojacalculo[filaactual][columnaactual] = String.format("%6S", value);
+    }
 }
