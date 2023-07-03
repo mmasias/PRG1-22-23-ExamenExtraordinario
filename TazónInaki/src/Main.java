@@ -38,7 +38,10 @@ public class Main {
                     break;
                 case "e":
                     System.out.print("Introduce el valor: ");
-                    cells[currentRow][currentCol] = scanner.nextDouble();
+                    double value = scanner.nextDouble();
+                    // Ensure that the value only has up to 6 digits
+                    value = value % 1_000_000;
+                    cells[currentRow][currentCol] = value;
                     break;
                 case "f":
                     System.out.println("Saliendo del programa.");
@@ -55,9 +58,9 @@ public class Main {
         for (int i = 0; i < NUM_ROWS; i++) {
             for (int j = 0; j < NUM_COLS; j++) {
                 if (i == currentRow && j == currentCol) {
-                    System.out.print("[" + cells[i][j] + "]" + "\t");
+                    System.out.print("[" + (int) cells[i][j] + "]" + "\t");
                 } else {
-                    System.out.print(cells[i][j] + "\t");
+                    System.out.print((int) cells[i][j] + "\t");
                 }
             }
             System.out.println();
