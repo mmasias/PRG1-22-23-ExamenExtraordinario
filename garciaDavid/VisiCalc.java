@@ -14,9 +14,9 @@ public class VisiCalc{
             imprimirExcel(excel, filaActual, columnaActual);
 
             System.out.print("Ingrese un comando (w, a, s, d, f): ");
-            String command = scanner.nextLine();
+            String comando = scanner.nextLine();
 
-            switch (command) {
+            switch (comando) {
                 case "w":
                     if (filaActual > 0) {
                         filaActual--;
@@ -41,10 +41,10 @@ public class VisiCalc{
                     corre = false;
                     break;
                 default:
-                    if (command.length() > 6) {
-                        excel[filaActual][columnaActual] = command.substring(0, 6);
+                    if (comando.length() > 6) {
+                        excel[filaActual][columnaActual] = comando.substring(0, 6);
                     } else {
-                        String cellValue = String.format("%6s", command);
+                        String cellValue = String.format("%6s", comando);
                         excel[filaActual][columnaActual] = cellValue;
                     }
                     break;
