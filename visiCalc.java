@@ -15,16 +15,16 @@ public class VisiCalc {
         int limiteSuperior=hojaDeCalculo.length-1;
         int limiteIzquierdo=0;
         int limiteDerecho=hojaDeCalculo[0].length-1;
-        int assetID=0;
 
         do {
-            imprimirLetraColumna();
+            imprimirEncabezado();
             for (int fila = 0; fila < hojaDeCalculo.length; fila++) {
+                imprimirNumeroFila(fila);
                 for (int columna = 0; columna < hojaDeCalculo[fila].length; columna++) {
                     if (fila == posicionCursor[0] && columna == posicionCursor[1]) {
-                        imprimirGrafico(0);
+                        System.out.print("[____]");
                     } else {
-                        System.out.print("      \t");
+                        System.out.print("      ");
                     }
                 }
                 System.out.println();
@@ -63,13 +63,22 @@ public class VisiCalc {
         System.out.print(graficos[assetID]);
     }
 
-    static Void imprimirLetraColumna() {
-      System.out.print("\t");
-      for (char c = 'A'; c < 'A' + 10; c++) {
-        System.out.print(c + "\t");
+    static void imprimirEncabezado() {
+      System.out.println("+" + "-".repeat(80) + "+");
+      System.out.print("|  |");
+      for (char letra = 'A'; letra < 'A' + 10; letra++) {
+        System.out.print("    " + letra + "|");
       }
-      System.out.println();
-    return null;
+      System.out.println("+" + "-".repeat(75) + "+");
     }
 
+    static void imprimirNumeroFila(int fila) {
+        int filaHoja = fila + 1;
+        String pared = (String.valueOf(filaHoja).length() < 2) ? "| " : "|";
+        if (fila == 10){
+            System.out.print( "|" + (filaHoja) + "|");
+        } else {
+            System.out.print( pared + (filaHoja) + "|");
+        }
+    }
 }
