@@ -1,6 +1,14 @@
-public class Main {
-    public static void main(String[] args){
-        
+public class examenextraordinario1 {
+    private static final int filas = 15;
+    private static final int columnas = 10;
+    private static final int ocupacion = 6;
+
+    private static String[][] spreadsheet = new String[filas][columnas];
+    private static int currentfilas = 0;
+    private static int currentcolumnas = 0;
+
+    public static void main(String[] args) {
+
+
     }
-    
 }
