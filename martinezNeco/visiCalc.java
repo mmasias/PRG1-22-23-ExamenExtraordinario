@@ -12,9 +12,9 @@ public class visiCalc {
         String[][] hojaCalculo = new String[filas][columnas];
         inicializar(hojaCalculo);
 
-
         Scanner scanner = new Scanner(System.in);
         String Comando;
+
         while (true) {
 
             imprimirHoja(hojaCalculo);
@@ -74,7 +74,7 @@ public class visiCalc {
     public static void imprimirHoja(String[][] hojaCalculo) {
         System.out.print("\t\t");
         for (int i = 0; i < hojaCalculo[0].length; i++) {
-            System.out.print((char) ('A' + i) + "\t\t");
+            System.out.print((char) ('A' + i) + "\t\t\t");
         }
         System.out.println();
 
@@ -107,10 +107,10 @@ public class visiCalc {
 
     }
 
-    public static void imprimirCeldaActual(int row, int col){
+    public static void imprimirCeldaActual(int fila, int columna){
 
-        char Letra = (char) ('A' + col);
-        int Numero = row + 1;
+        char Letra = (char) ('A' + columna);
+        int Numero = fila + 1;
         System.out.println("Celda actual: " + Letra + Numero);
         System.out.println();
 
@@ -120,8 +120,8 @@ public class visiCalc {
 
     public static void editar(String[][] hojaCalculo, int fila, int columna, Scanner scanner) {
         System.out.print("Ingrese el nuevo valor para la celda: ");
-        String newValue = scanner.nextLine().trim();
-        hojaCalculo[fila][columna] = newValue;
+        String nuevoValor = scanner.nextLine().trim();
+        hojaCalculo[fila][columna] = nuevoValor;
         System.out.println("El valor de la celda ha sido actualizado.");
 
 
