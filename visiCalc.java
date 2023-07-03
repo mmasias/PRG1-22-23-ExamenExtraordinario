@@ -27,8 +27,10 @@ public class VisiCalc {
                         System.out.print("      ");
                     }
                 }
+                System.out.print("|");
                 System.out.println();
             }
+            System.out.println("+" + "-".repeat(62) + "+");
 
             inputUsuario = Character.toLowerCase(entrada.nextLine().charAt(0));
             switch (inputUsuario) {
@@ -64,12 +66,12 @@ public class VisiCalc {
     }
 
     static void imprimirEncabezado() {
-      System.out.println("+" + "-".repeat(80) + "+");
+      System.out.println("+" + "-".repeat(62) + "+");
       System.out.print("|  |");
       for (char letra = 'A'; letra < 'A' + 10; letra++) {
         System.out.print("    " + letra + "|");
       }
-      System.out.println("+" + "-".repeat(75) + "+");
+      System.out.println("\n+" + "-".repeat(62) + "+");
     }
 
     static void imprimirNumeroFila(int fila) {
