@@ -3,16 +3,25 @@ import java.util.Scanner;
 public class Main {
     public static final int NUM_ROWS = 15;
     public static final int NUM_COLS = 10;
-    private double[][] cells = new double[NUM_ROWS][NUM_COLS];
+    private String[][] cells = new String[NUM_ROWS][NUM_COLS];
 
     private int currentRow = 0;
     private int currentCol = 0;
+
+    public Main() {
+        for (int i = 0; i < NUM_ROWS; i++) {
+            for (int j = 0; j < NUM_COLS; j++) {
+                cells[i][j] = "";
+            }
+        }
+    }
 
     public void run() {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
             printCells();
+            System.out.println("Te encuentras en la celda: [" + (currentRow + 1) + ", " + (currentCol + 1) + "]");
             System.out.print("Introduce un comando (w/a/s/d para mover, f para salir, e para ingresar valor): ");
             String command = scanner.next();
             switch (command.toLowerCase()) {
@@ -37,9 +46,11 @@ public class Main {
                     }
                     break;
                 case "e":
-                    System.out.print("Introduce el valor: ");
-                    double value = scanner.nextDouble();
-                    value = value % 1_000_000;
+                    System.out.print("Ingrese comando: ");
+                    String value = scanner.next();
+                    if (value.length() > 6) {
+                        value = value.substring(0, 6);
+                    }
                     cells[currentRow][currentCol] = value;
                     break;
                 case "f":
@@ -56,7 +67,7 @@ public class Main {
     private void printCells() {
         for (int i = 0; i < NUM_ROWS; i++) {
             for (int j = 0; j < NUM_COLS; j++) {
-                String value = String.format("%6d", (int) cells[i][j]);
+                String value = String.format("%-6s", cells[i][j]);
                 if (i == currentRow && j == currentCol) {
                     System.out.print("[" + value + "]" + "\t");
                 } else {
