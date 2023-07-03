@@ -62,7 +62,7 @@ public class App {
                 System.out.println("|");
             }
             System.out.println("|--+------+------+------+------+------+------+------+------+------+------|");
-            System.out.println("|HM|X:" + (posCol - 1) + "| Y:" + posFil);
+            System.out.println("|  | X: " + (posCol - 1) + " | Y: " + posFil);
             System.out.println("|------------------------------------------------------------------------|");
             System.out.println("CMDs: [w]:Arriba, [a]:Izquierda, [s]:Abajo, [d]:Derecha, [f]:Salir      ");
             System.out.print("Ingrese un comando: ");
