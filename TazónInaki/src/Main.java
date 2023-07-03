@@ -39,7 +39,6 @@ public class Main {
                 case "e":
                     System.out.print("Introduce el valor: ");
                     double value = scanner.nextDouble();
-                    // Ensure that the value only has up to 6 digits
                     value = value % 1_000_000;
                     cells[currentRow][currentCol] = value;
                     break;
@@ -57,10 +56,11 @@ public class Main {
     private void printCells() {
         for (int i = 0; i < NUM_ROWS; i++) {
             for (int j = 0; j < NUM_COLS; j++) {
+                String value = String.format("%6d", (int) cells[i][j]);
                 if (i == currentRow && j == currentCol) {
-                    System.out.print("[" + (int) cells[i][j] + "]" + "\t");
+                    System.out.print("[" + value + "]" + "\t");
                 } else {
-                    System.out.print((int) cells[i][j] + "\t");
+                    System.out.print(value + "\t");
                 }
             }
             System.out.println();
