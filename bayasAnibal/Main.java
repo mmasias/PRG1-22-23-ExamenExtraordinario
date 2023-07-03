@@ -7,90 +7,106 @@ public class Main {
         char inputUsuario;
         boolean terminar = false;
 
-        int[][] unaMatriz = {
-                {1, 1, 1, 1, 1, 1, 1, 1, 1, 1,},
-                {1, 2, 2, 2, 2, 2, 2, 2, 2, 2,},
-                {1, 4, 1, 2, 1, 2, 2, 2, 1, 1,},
-                {1, 2, 1, 2, 2, 2, 2, 2, 2, 2,},
-                {1, 2, 1, 1, 1, 1, 2, 1, 1, 1,},
-                {2, 2, 2, 2, 2, 1, 2, 1, 2, 2,},
-                {1, 2, 2, 2, 2, 1, 2, 1, 1, 1,},
-                {1, 2, 1, 2, 2, 1, 2, 2, 2, 2,},
-                {1, 2, 1, 2, 2, 2, 2, 2, 2, 2,},
-                {1, 4, 1, 1, 1, 1, 1, 1, 1, 1,},
-                {1, 2, 2, 2, 2, 2, 2, 2, 2, 2,},
-                {1, 1, 1, 1, 1, 1, 1, 1, 1, 1,}
+        char[][] unaMatriz = {
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},
+
         };
 
-        int[] posicion = {1, 1};
-
-
-
+        int[] Posicion = {0, 0};
 
         int limiteInferior = 0;
         int limiteSuperior = unaMatriz.length - 1;
         int limiteIzquierdo = 0;
         int limiteDerecho = unaMatriz[0].length - 1;
-        int movimiento;
+        int skin = 0;
 
         do {
             for (int laFila = 0; laFila < unaMatriz.length; laFila++) {
                 for (int laColumna = 0; laColumna < unaMatriz[laFila].length; laColumna++) {
-
-
+                    if (laFila == Posicion[0] && laColumna == Posicion[1]) {
+                        imprimePacman(skin);
+                    } else {
+                        imprimeTerreno(unaMatriz[laFila][laColumna], skin);
+                    }
                 }
                 System.out.println();
             }
-            System.out.println("Introduce la acción que quieres hacer");
-            System.out.println("W. Arriba");
-            System.out.println("S. Abajo");
-            System.out.println("A. Izquierda");
-            System.out.println("D. Derecha");
-            System.out.println("E. Editar");
-            System.out.println("F. Finalizar");
-            movimiento = entrada.next().charAt(0);
 
             inputUsuario = entrada.nextLine().charAt(0);
             switch (inputUsuario) {
-                case 's', 'S':
-                    posicion[0] = posicion[0] + 1;
+                case 's', 'S', '8':
+                    Posicion[0] = Posicion[0] + 1;
                     break;
-                case 'w', 'W':
-                    posicion[0] = posicion[0] - 1;
+                case 'w', 'W', '2':
+                    Posicion[0] = Posicion[0] - 1;
                     break;
-                case 'a', 'A':
-                    posicion[1] = posicion[1] - 1;
+                case 'a', 'A', '4':
+                    Posicion[1] = Posicion[1] - 1;
                     break;
-                case 'd', 'D' :
-                    posicion[1] = posicion[1] + 1;
+                case 'd', 'D', '6':
+                    Posicion[1] = Posicion[1] + 1;
                     break;
-               case 'E', 'e':
-                   System.out.println("Introduce el valor que quieres editar");
-
+                case 'v', 'V':
+                    skin = skin + 1;
+                    if (skin > 2) {
+                        skin = 0;
+                    }
                     break;
                 case 'f', 'F':
                     terminar = true;
             }
 
-            if (posicion[0] < limiteInferior) {
-                posicion[0] = limiteSuperior;
+            if (Posicion[0] < limiteInferior) {
+                Posicion[0] = limiteSuperior;
             }
-            if (posicion[0] > limiteSuperior) {
-                posicion[0] = limiteInferior;
+            if (Posicion[0] > limiteSuperior) {
+                Posicion[0] = limiteInferior;
             }
-            if (posicion[1] < limiteIzquierdo) {
-                posicion[1] = limiteDerecho;
+            if (Posicion[1] < limiteIzquierdo) {
+                Posicion[1] = limiteDerecho;
             }
-            if (posicion[1] > limiteDerecho) {
-                posicion[1] = limiteIzquierdo;
+            if (Posicion[1] > limiteDerecho) {
+                Posicion[1] = limiteIzquierdo;
             }
 
-
-
+            if (unaMatriz[Posicion[0]][Posicion[1]] == 2) {
+                unaMatriz[Posicion[0]][Posicion[1]] = 0;
+            } else if (unaMatriz[Posicion[0]][Posicion[1]] == 4) {
+                unaMatriz[Posicion[0]][Posicion[1]] = 0;
+            }
 
 
         } while (!terminar);
     }
+
+    static void imprimeTerreno(int unTile, int skin) {
+
+        String[][] terreno = {
+                {" . ",},
+
+        };
+        System.out.print(terreno[unTile][skin]);
+    }
+
+    static void imprimePacman(int skin) {
+        String[] pacman = {" - "};
+        System.out.print(pacman[skin]);
+    }
+
 
 
 }
