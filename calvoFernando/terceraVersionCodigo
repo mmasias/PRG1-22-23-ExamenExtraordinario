@@ -1,0 +1,129 @@
+import java.util.Scanner;
+
+public class ExtraProgra12023 {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        int posiFila = 0;
+
+        int posiColumna = 1; //todo recuerda que se inicializa en 1 porque sino empieza en la -1
+
+        String[] cabecera = {"  ", "   A  ", "   B  ", "   C  ", "   D  ", "   E  ", "   F  ", "   G  ", "   H  ",
+                "   I  ", "   J  "};
+
+        String[][] visiCalc = {
+
+                {" 1", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ",
+                        "      "},
+                {" 2", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ",
+                        "      "},
+                {" 3", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ",
+                        "      "},
+                {" 4", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ",
+                        "      "},
+                {" 5", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ",
+                        "      "},
+                {" 6", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ",
+                        "      "},
+                {" 7", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ",
+                        "      "},
+                {" 8", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ",
+                        "      "},
+                {" 9", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ",
+                        "      "},
+                {"10", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ",
+                        "      "},
+                {"11", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ",
+                        "      "},
+                {"12", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ",
+                        "      "},
+                {"13", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ",
+                        "      "},
+                {"14", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ",
+                        "      "}
+
+        };
+
+        Boolean out = false;
+
+        while (!out) {
+
+            System.out.println("+------------------------------------------------------------------------+");
+
+            for (int pos=0;pos<cabecera.length;pos++) {
+                System.out.print("|");
+                System.out.print(cabecera[pos]);
+            }
+
+            System.out.println("|");
+            System.out.println("+--+------+------+------+------+------+------+------+------+------+------+");
+
+            for (int filas=0;filas<visiCalc.length;filas++) {
+
+                for (int columnas=0;columnas<visiCalc[0].length;columnas++) {
+
+                    if ((filas == posiFila) && (columnas == posiColumna)) {
+                        System.out.print("|");
+                        System.out.print("[----]");
+                    } else {
+                        System.out.print("|");
+                        System.out.print(visiCalc[filas][columnas]);
+                    }
+                }
+
+                System.out.println("|");
+
+            }
+
+            System.out.println("|--+------+------+------+------+------+------+------+------+------+------|");
+            System.out.println("|  | X: "+(posiColumna-1)+" | Y: "+posiFila);
+            System.out.println("|------------------------------------------------------------------------|");
+            System.out.println("CMDs: [w]:Arriba, [a]:Izquierda, [s]:Abajo, [d]:Derecha, [f]:Salir");
+            System.out.print("Ingrese un comando: ");
+
+
+            String entrada;
+            entrada = sc.nextLine();
+
+            Object[] entrance = {"w", "a", "s", "d", "f"};
+
+            if (entrada.equals(entrance[0])) {
+                if (posiFila>0) {
+                    posiFila = posiFila - 1;
+                }
+            } else if (entrada.equals(entrance[1])) {
+                if (posiColumna>1) {
+                    posiColumna = posiColumna - 1;
+                }
+            } else if (entrada.equals(entrance[2])) {
+                if (posiFila<visiCalc.length-1) {
+                    posiFila = posiFila + 1;
+                }
+            } else if (entrada.equals(entrance[3])) {
+                if (posiColumna<visiCalc[0].length-1) {
+                    posiColumna = posiColumna + 1;
+                }
+            } else if (entrada.equals(entrance[4])) {
+
+                out = true;
+
+            } else {
+
+                if (entrada.length() > 6) {
+                    visiCalc[posiFila][posiColumna] = entrada.substring(0, 6);
+                }
+
+                else if (entrada.length()<6) {
+                    int caracteres = 6-entrada.length();
+                    for (int i=0; i<caracteres; i++) {
+                        entrada = "" +entrada;
+                    }
+                    visiCalc[posiFila][posiColumna] = entrada;
+                } else {
+                    visiCalc[posiFila][posiColumna] = entrada;
+                }
+            }
+        }
+    }
+}
