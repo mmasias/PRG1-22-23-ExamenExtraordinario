@@ -14,10 +14,9 @@ public class VisiCalc {
         boolean terminar = false;
 
         do {
-            System.out.println("cmdS: [W]Arriba, [S]Abajo, [A]Izquierda, [D]Derecha, [F]Salir");
+            System.out.println("cmdS: [W]Arriba, [S]Abajo, [A]Izquierda, [D]Derecha, [F]Salir, [E]Ingresar Texto");
             System.out.println("Ingrese Comando: ");
             inputUsuario = entrada.nextLine().charAt(0);
-
             switch (inputUsuario) {
                 case 'w', 'W':
                     if (filaActual > 0) {
@@ -43,16 +42,17 @@ public class VisiCalc {
                     System.out.println("Ha finalizado el programa");
                     terminar = true;
                     break;
-                default:
+                case 'e', 'E':
                     System.out.println("Texto o numero");
                     String contenido = entrada.nextLine();
                     hojaCalculo[filaActual][columnaActual] = formatearContenido(contenido);
                     break;
             }
-            System.out.println("Fila actual: " + (filaActual + 1));
-            System.out.println("Columna actual: " + (columnaActual + 1));
+
             System.out.println("--- HOJA DE CALCULOS ---");
+            System.out.println("| | A | B | C | D | E | F | G | H | I | J |");
             mostrarHojaDeCalculo(hojaCalculo);
+            System.out.println("| X: "+(filaActual + 1+"|"+" Y: "+columnaActual+"|"));
             System.out.println("--------------------------");
         } while (!terminar);
     }
