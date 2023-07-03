@@ -6,7 +6,7 @@ public class HojaCalculo{
 
         Sacanner entrada = new Scanner(System.in);
 
-        int[][] Hoja = new int [15][10];
+        int[][] hojaCalculo = new int [15][10];
         char inputUsuario;
         boolan salirDelSistema = false; 
         int filaActual = 0;
@@ -26,25 +26,35 @@ public class HojaCalculo{
 
         inputUsuario = entrada.nextLine().charAt(0);
             switch (inputUsuario) {
-                case 's', 'S', '8':
-                    
+                case 'w', 'W':
+                    if(filaActual>0){
+                        fila--;
+                    }
                     break;
-                case 'w', 'W', '2':
+                    
+                case 'a', 'A':
+                    if (columnaActual > 0) {
+                    columnaActual--;
+                }
                   
                     break;
-                case 'a', 'A', '4':
+                case 's', 'S':
+                   if (filaActual < hojaCalculo.length - 1) {
+                    filaActual++;
+                }
+                    break;
+                    
+                case 'd', 'D':
+                    if (columnaActual < hojaCalculo[0].length - 1) {
+                    columnaActual++;
+                }
                     
                     break;
-                case 'd', 'D', '6':
-                    
-                    break;
-
-                    case 'v', 'V':
-                        skin= skin + 1;
+                      
+                 case 'f', 'F':
+                    salirDelSistema = true;
   
                
-                    case 'f', 'F':
-                    salirDelSistema = true;
             }
 
 
