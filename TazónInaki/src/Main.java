@@ -13,7 +13,7 @@ public class Main {
 
         while (true) {
             printCells();
-            System.out.print("Introduce un comando (w/a/s/d para mover, f para salir, Enter para ingresar valor): ");
+            System.out.print("Introduce un comando (w/a/s/d para mover, f para salir, e para ingresar valor): ");
             String command = scanner.next();
             switch (command.toLowerCase()) {
                 case "w":
@@ -26,4 +26,14 @@ public class Main {
                         currentCol--;
                     }
                     break;
-  
+                case "s":
+                    if (currentRow < NUM_ROWS - 1) {
+                        currentRow++;
+                    }
+                    break;
+                case "d":
+                    if (currentCol < NUM_COLS - 1) {
+                        currentCol++;
+                    }
+                    break;
+
