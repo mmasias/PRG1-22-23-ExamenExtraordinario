@@ -6,6 +6,7 @@ public class Main {
         Scanner s = new Scanner(System.in);
 
 
+
         for (int i = 0; i < hojaCalculo.length; i++) {
             for (int j = 0; j < hojaCalculo[i].length; j++) {
                 hojaCalculo[i][j] = 0;
@@ -56,19 +57,19 @@ public class Main {
                     }
                 }
 
-                int contadorX = 0;
-                int contadorY = 0;
+                int posicionX = 0;
+                int posicionY = 0;
 
                 if (s.next() == "d") {
-                    contadorX++;
+                    posicionX++;
                 } else if (s.next() == "a") {
-                    contadorX--;
+                    posicionX--;
                 }
 
                 if (s.next() == "w") {
-                    contadorY++;
+                    posicionY++;
                 } else if (s.next() == "s") {
-                    contadorY--;
+                    posicionY--;
                 }
 
 
