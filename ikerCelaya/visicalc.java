@@ -25,12 +25,14 @@ public class visicalc {
         int[] posicionInicial = { 0, 0 };
 
         do {
-            for (int laFila = 0; laFila < unaMatriz.length; laFila++) {
-                for (int laColumna = 0; laColumna < unaMatriz[laFila].length; laColumna++) {
+            for (int laFila = 0; laFila < 16; laFila++) {
+                for (int laColumna = 0; laColumna < 11; laColumna++) {
                     if (laFila == posicionInicial[0] && laColumna == posicionInicial[1]) {
                         System.out.print("|[____]|");
+                    } else if (laColumna == 10) {
+                        System.out.print(valor+"|");
                     } else {
-                            System.out.print("|"+valor+"|");
+                            System.out.print("|"+valor);
                     }
                 }
                 System.out.println();
@@ -55,11 +57,6 @@ public class visicalc {
                 case 'f', 'F':
                     terminar = true;
             }
-
-            if (unaMatriz[posicionInicial[0]][posicionInicial[1]] == 2){
-                unaMatriz[posicionInicial[0]][posicionInicial[1]]=0;
-            }
-
 
         } while (!terminar);
     }
