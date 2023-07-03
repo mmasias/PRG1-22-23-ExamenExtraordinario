@@ -1,0 +1,75 @@
+import java.util.Scanner;
+
+public class VisiCalc {
+
+	public static void main(String[] args) {
+		
+		Scanner entrada = new Scanner(System.in);
+		char inputUsuario;
+		boolean terminar = false;
+		
+		int[][] hojaCalculo = {
+                { 2, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+                { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                { 1, 5, 3, 0, 3, 0, 0, 0, 3, 3},
+                { 1, 0, 3, 0, 0, 0, 0, 0, 0, 0},
+                { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+                { 1, 0, 3, 3, 3, 3, 0, 3, 3, 3},
+                { 0, 0, 0, 0, 0, 3, 0, 3, 0, 0},
+                { 1, 0, 0, 0, 0, 3, 0, 3, 3, 3},
+                { 1, 0, 3, 0, 0, 3, 0, 0, 0, 0},
+                { 1, 0, 3, 0, 0, 0, 0, 0, 0, 0},
+                { 1, 5, 3, 3, 3, 3, 3, 3, 3, 3},
+                { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+        };
+		
+		int[] jugador = {5,5};
+		
+		do {
+			for (int laFila = 0; laFila < hojaCalculo.length; laFila++) {
+                for (int laColumna = 0; laColumna < hojaCalculo[laFila].length; laColumna++) {
+                	
+                	if (laFila == jugador[0] && laColumna == jugador[1]) {
+                        System.out.print("P");
+                        
+                    } else {
+                        if (hojaCalculo[laFila][laColumna] == 1) {
+                            System.out.print("---");
+                        } else if (hojaCalculo[laFila][laColumna] == 2) {
+                            System.out.print("+");
+                        }else if(hojaCalculo[laFila][laColumna] == 3) {
+                        	System.out.print("#");
+                        }else if(hojaCalculo[laFila][laColumna] == 2) {
+                        	System.out.print(" ");
+                        }else if (hojaCalculo[laFila][laColumna] == 5) {
+                        	System.out.print("*");
+                        }
+                    }
+                }
+            }
+		
+		
+		
+		inputUsuario = entrada.nextLine().charAt(0);
+        switch (inputUsuario) {
+            case 's', 'S':
+                jugador[0] = jugador[0] + 1;
+                break;
+            case 'w', 'W':
+            	jugador[0] = jugador[0] - 1;
+                break;
+            case 'a', 'A':
+            	jugador[1] = jugador[1] - 1;
+                break;
+            case 'd', 'D':
+            	jugador[1] = jugador[1] + 1;
+                break;
+            
+            case 'f', 'F':
+                terminar = true;
+        }
+
+		}while(terminar = true);
+	}
+}
