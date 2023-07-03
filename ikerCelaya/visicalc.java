@@ -5,9 +5,8 @@ public class visicalc {
 
         Scanner entrada = new Scanner(System.in);
         char inputUsuario;
-        int posicionX, posicionY;
         boolean terminar = false;
-
+        String valor= "      ";
         int[][] unaMatriz = {
                 { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
                 { 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1 },
@@ -23,26 +22,22 @@ public class visicalc {
                 { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }
         };
 
-        int[] posicionInicial = { 1, 1 };
+        int[] posicionInicial = { 0, 0 };
 
         do {
             for (int laFila = 0; laFila < unaMatriz.length; laFila++) {
                 for (int laColumna = 0; laColumna < unaMatriz[laFila].length; laColumna++) {
                     if (laFila == posicionInicial[0] && laColumna == posicionInicial[1]) {
-                        System.out.print("[____]");
+                        System.out.print("|[____]|");
                     } else {
-                        if (unaMatriz[laFila][laColumna] == 0) {
-                            System.out.print(" ");
-                        } else if (unaMatriz[laFila][laColumna] == 1) {
-                            System.out.print("#");
-                        } else if (unaMatriz[laFila][laColumna] == 2) {
-                            System.out.print(".");
-                        }
+                            System.out.print("|"+valor+"|");
                     }
                 }
                 System.out.println();
             }
-
+            System.out.println("| X: " + posicionInicial[1] + " | Y: " + posicionInicial[0] + " |");
+            System.out.println("CMDs: [W]Arriba,[S]Abajo,[A]Izquierda,[D]Derecha,[F]Salir");
+            System.out.println("Ingrese comando: ");
             inputUsuario = entrada.nextLine().charAt(0);
             switch (inputUsuario) {
                 case 's', 'S':
