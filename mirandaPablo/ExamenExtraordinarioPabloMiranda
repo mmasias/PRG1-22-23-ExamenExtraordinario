@@ -1,0 +1,96 @@
+  import java.util.Scanner;
+
+public class examenextraordinario1 {
+    private static final int filas = 15;
+    private static final int columnas = 10;
+    private static final int ocupacion = 6;
+
+    private static String[][] hojacalculo = new String[filas][columnas];
+    private static int filaactual = 0;
+    private static int columnaactual = 0;
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        boolean running = true;
+    initializeSpreadsheet();
+    while(running){
+        printSpreadsheet();
+        printCursorPosition();
+
+        String command = scanner.nextLine().toUpperCase();
+        switch(command){
+        case "W":
+            moveup();
+            break;
+        case "A":
+            moveLeft();
+            break;
+        case "S":
+            moveDown();
+            break;
+        case "D":
+            moveRight();
+            break;
+        case "F":
+            running = false;
+            break;
+        default:
+            writeValue(command);
+            break;
+        }
+    }
+        scanner.close();
+        System.out.println("Programa ejecutado correctamente. ");
+    }
+    private static void initializeSpreadsheet(){
+        for(int fila=0; fila<15; fila++){
+            for(int columna=0; columna<10; columna++){
+                hojacalculo[fila][columna] = "";
+            }
+        }
+    }
+    private static void printSpreadsheet(){
+        System.out.println("Hoja de calculo: ");
+        for(int fila=0; fila<15; fila++){
+            for( int columna=0; columna<10; columna++){
+                String value = hojacalculo[fila][columna];
+                System.out.print(formatCellValue(value)+" ");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+    private static void printCursorPosition(){
+        System.out.println("Posicion actual: Fila"+(filaactual+1)+", Columna: "+(columnaactual+1));
+    }
+    private static String formatCellValue(String value){
+        if(value.length() <= ocupacion){
+            return value;
+        } else{
+            return value.substring(0, ocupacion);
+        }
+    }
+    private static void moveup(){
+        if(filaactual>0){
+            filaactual--;
+        }
+    }
+    private static void moveDown(){
+        if(filaactual<15-1){
+            filaactual++;
+        }
+    }
+    private static void moveLeft(){
+        if(columnaactual>0){
+            columnaactual--;
+        }
+    }
+    private static void moveRight(){
+        if(columnaactual<10-1){
+            columnaactual++;
+        }
+    }
+    private static void writeValue(String value){
+        hojacalculo[filaactual][columnaactual] = String.format("%6S", value);
+    }
+}
