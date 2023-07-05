@@ -1,0 +1,87 @@
+import java.util.Scanner;
+
+public class ExtraProgra12023 {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        int posiFila = 0;
+
+        int posiColumna = 0; //todo recuerda que se inicializa en 1 porque sino empieza en la -1
+
+        String[] cabecera = {"  ", "   A  ", "   B  ", "   C  ", "   D  ", "   E  ", "   F  ", "   G  ", "   H  ",
+                "   I  ", "   J  "};
+
+        String[][] visiCalc = {
+
+                {" 1", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ",
+                        "      "},
+                {" 2", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ",
+                        "      "},
+                {" 3", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ",
+                        "      "},
+                {" 4", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ",
+                        "      "},
+                {" 5", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ",
+                        "      "},
+                {" 6", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ",
+                        "      "},
+                {" 7", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ",
+                        "      "},
+                {" 8", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ",
+                        "      "},
+                {" 9", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ",
+                        "      "},
+                {"10", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ",
+                        "      "},
+                {"11", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ",
+                        "      "},
+                {"12", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ",
+                        "      "},
+                {"13", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ",
+                        "      "},
+                {"14", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ", "      ",
+                        "      "}
+
+        };
+
+        Boolean out = false;
+
+        while (!out) {
+
+            System.out.println("+------------------------------------------------------------------------+");
+
+            for (int pos=0;pos<cabecera.length;pos++) {
+                System.out.print("|");
+                System.out.print(cabecera[pos]);
+            }
+
+            System.out.println("|");
+            System.out.println("+--+------+------+------+------+------+------+------+------+------+------+");
+
+            for (int filas=0;filas<visiCalc.length;filas++) {
+
+                for (int columnas=0;columnas<visiCalc[0].length;columnas++) {
+
+                    if ((filas == posiFila) && (columnas == posiColumna)) {
+                        System.out.print("|");
+                        System.out.print("[------]");
+                    } else {
+                        System.out.print("|");
+                        System.out.print(visiCalc[filas][columnas]);
+                    }
+                }
+
+                System.out.println("|");
+
+            }
+
+            System.out.println("|--+------+------+------+------+------+------+------+------+------+------|");
+            System.out.println("|  | X: "+(posiColumna-1)+" | Y: "+posiFila);
+            System.out.println("|------------------------------------------------------------------------|");
+            System.out.println("CMDs: [w]:Arriba, [a]:Izquierda, [s]:Abajo, [d]:Derecha, [f]:Salir");
+            System.out.print("Ingrese un comando: ");
+
+        }
+    }
+}
